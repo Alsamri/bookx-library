@@ -41,7 +41,7 @@ export const adminSideBarLinks = [
 ];
 
 export const FIELD_NAMES = {
-  fullname: "Full name",
+  fullName: "Full name",
   email: "Email",
   universityId: "University ID Number",
   password: "Password",
@@ -49,7 +49,7 @@ export const FIELD_NAMES = {
 };
 
 export const FIELD_TYPES = {
-  fullname: "text",
+  fullName: "text",
   email: "email",
   universityId: "number",
   password: "password",
@@ -87,7 +87,6 @@ export const sampleBooks = [
     videoUrl: "/sample-video.mp4?updatedAt=1722593504152",
     summary:
       "A revolutionary guide to making good habits, breaking bad ones, and getting 1% better every day.",
-    isLoanedBook: true,
   },
   {
     id: 3,
