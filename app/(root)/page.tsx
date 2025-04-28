@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { homedir } from "os";
 import BookOverview from "@/components/BookOverview";
 import BookList from "@/components/BookList";
 import { sampleBooks } from "@/constant";
