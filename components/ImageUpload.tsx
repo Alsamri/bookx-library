@@ -90,7 +90,7 @@ const ImageUpload = ({
       })
         .then(onSuccess)
         .catch(onError);
-    } catch (error) {
+    } catch (error: any) {
       onError(error);
     }
   };
