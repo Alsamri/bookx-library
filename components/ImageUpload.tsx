@@ -20,18 +20,22 @@ interface Props {
   placeholder?: string;
   folder?: string;
   variant?: "dark" | "light";
+  value?: string;
 }
 
 const ImageUpload = ({
   onFileChange,
-  type = "image",
-  accept = "image/*",
-  placeholder = "Upload file",
-  folder = "/",
-  variant = "light",
+  type,
+  accept,
+  placeholder,
+  folder,
+  variant,
+  value,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [file, setFile] = useState<{ filePath: string | null } | null>({
+    filePath: value ?? null,
+  });
   const [progress, setProgress] = useState(0);
 
   const styles = {
@@ -51,7 +55,7 @@ const ImageUpload = ({
   const onSuccess = (res: any) => {
     setFile(res);
     onFileChange?.(res.filePath);
-    toast.success(`${res.filePath} uploaded successfully!`);
+    toast.success(`${type} uploaded successfully!`);
   };
 
   const onValidate = (file: File) => {
