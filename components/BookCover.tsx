@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+
+import { Image } from "@imagekit/next";
 import BookCoverSvg from "./BookCoverSvg";
+import config from "@/lib/config";
 type BookCoverVriant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 
 const variantStyles: Record<BookCoverVriant, string> = {
@@ -39,9 +43,11 @@ const BookCover = ({
       >
         <Image
           src={coverUrl}
+          urlEndpoint={config.env.imagekit.urlEndpoint}
           alt="book cover"
           fill
           className="rounded-sm object-fill"
+          loading="lazy"
         />
       </div>
     </div>

@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validition";
 import {
@@ -17,6 +17,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import ImageUpload from "@/components/ImageUpload";
+import ColorPicker from "../colorPicker";
+import { createBook } from "@/lib/admin/book";
 
 interface Props extends Partial<Book> {
   type?: "create" | "update";
@@ -28,12 +30,12 @@ const AuthForm = ({ type, ...book }: Props) => {
     resolver: zodResolver(bookSchema),
     defaultValues: {
       title: "",
-      describtion: "",
+      description: "",
       author: "",
       genre: "",
       rating: 1,
       totalCopies: 1,
-      coveruRL: "",
+      coverUrl: "",
       coverColor: "",
       videoUrl: "",
       summary: "",
@@ -41,7 +43,15 @@ const AuthForm = ({ type, ...book }: Props) => {
   });
 
   // 2. Define a submit handler.
-  const onSubmit = async (data: z.infer<typeof bookSchema>) => {};
+  const onSubmit = async (data: z.infer<typeof bookSchema>) => {
+    const result = await createBook(data);
+    if (result.succes) {
+      toast.success("Book created successfully");
+      router.push(`/admin/books/${result.data.id}`);
+    } else {
+      toast.error("Creating book failed");
+    }
+  };
 
   return (
     <Form {...form}>
@@ -157,25 +167,11 @@ const AuthForm = ({ type, ...book }: Props) => {
         />
         <FormField
           control={form.control}
-          name={"coveruRL"}
+          name={"coverUrl"}
           render={({ field }) => (
             <FormItem className="flex flex-col gap-1">
               <FormLabel className="text-base font-normal text-dark-500">
                 Book Image
-              </FormLabel>
-              <FormControl>{/*fileupload func*/}</FormControl>
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name={"coverColor"}
-          render={({ field }) => (
-            <FormItem className="flex flex-col gap-1">
-              <FormLabel className="text-base font-normal text-dark-500">
-                Cover color
               </FormLabel>
               <FormControl>
                 <ImageUpload
@@ -188,18 +184,34 @@ const AuthForm = ({ type, ...book }: Props) => {
                   value={field.value}
                 />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name={"describtion"}
+          name={"coverColor"}
           render={({ field }) => (
             <FormItem className="flex flex-col gap-1">
               <FormLabel className="text-base font-normal text-dark-500">
-                Describtion
+                Cover color
+              </FormLabel>
+              <FormControl></FormControl>
+              <ColorPicker
+                onPickerChange={field.onChange}
+                value={field.value}
+              />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name={"description"}
+          render={({ field }) => (
+            <FormItem className="flex flex-col gap-1">
+              <FormLabel className="text-base font-normal text-dark-500">
+                Description
               </FormLabel>
               <FormControl>
                 <Textarea
