@@ -15,6 +15,13 @@
       "when": 1746288867880,
       "tag": "0001_fine_rhodey",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1746354164886,
+      "tag": "0002_vengeful_vision",
+      "breakpoints": true
     }
   ]
 }
