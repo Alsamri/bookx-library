@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bookx Library
 
-## Getting Started
+Bookx Library is a full-stack web application for managing book lending in a university or institutional setting. It supports user authentication, borrowing logic, admin controls, and automated workflows for notifications.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Secure user authentication using NextAuth.js with bcrypt-encrypted credentials
+- Role-based admin dashboard with access to user stats, book inventory, and borrowing analytics
+- Book listing, borrowing, and availability tracking for users
+- Automated email workflows using Resend and Upstash Workflow for due date reminders and status updates
+- API rate limiting and caching with Upstash Redis and Ratelimit
+- Image upload integration via ImageKit
+- Clean, accessible, and responsive UI built with Tailwind CSS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 15, React 19, Tailwind CSS, Radix UI
+- **Backend**: App Router (Next.js), Drizzle ORM, Neon PostgreSQL
+- **Authentication**: NextAuth.js + bcryptjs
+- **Image Management**: ImageKit
+- **Workflows**: Upstash Workflow + Resend
+- **Rate Limiting & Caching**: Upstash Redis, Ratelimit
+- **Validation & Forms**: Zod, React Hook Form
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup
 
-## Learn More
+1. **Clone the repository**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/your-username/bookx-library.git
+   cd bookx-library
+   npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **ENV Keys**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# ImageKit
+NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=
+NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=
+IMAGEKIT_PRIVATE_KEY=
 
-## Deploy on Vercel
+# API
+NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000
+NEXT_PROD_API_ENDPOINT=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Database
+DATABASE_URL=
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Auth
+AUTH_SECRET=
+
+# Upstash Redis
+UPSTASH_REDIS_URL=https://assuring-grouse-21095.upstash.io
+UPSTASH_REDIS_TOKEN=
+
+# Upstash Workflow
+QSTASH_URL=https://qstash.upstash.io
+QSTASH_TOKEN=
+RESEND_WORKFLOW=
