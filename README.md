@@ -14,9 +14,9 @@ Bookx Library is a full-stack web application for managing book lending in a uni
 
 ## Tech Stack
 
-- **Frontend**: Next.js 15, React 19, Tailwind CSS, Radix UI
+- **Frontend**: Next.js 15, React 19, Tailwind CSS
 - **Backend**: App Router (Next.js), Drizzle ORM, Neon PostgreSQL
-- **Authentication**: NextAuth.js + bcryptjs
+- **Authentication**: Auth.js + bcryptjs
 - **Image Management**: ImageKit
 - **Workflows**: Upstash Workflow + Resend
 - **Rate Limiting & Caching**: Upstash Redis, Ratelimit
