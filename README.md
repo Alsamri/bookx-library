@@ -33,26 +33,26 @@ Bookx Library is a full-stack web application for managing book lending in a uni
 
 2. **ENV Keys**
 
-# ImageKit
+ ImageKit
 NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=
 NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=
 IMAGEKIT_PRIVATE_KEY=
 
-# API
+ API
 NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000
 NEXT_PROD_API_ENDPOINT=
 
-# Database
+ Database
 DATABASE_URL=
 
-# Auth
+ Auth
 AUTH_SECRET=
 
-# Upstash Redis
+ Upstash Redis
 UPSTASH_REDIS_URL=https://assuring-grouse-21095.upstash.io
 UPSTASH_REDIS_TOKEN=
 
-# Upstash Workflow
+ Upstash Workflow
 QSTASH_URL=https://qstash.upstash.io
 QSTASH_TOKEN=
 RESEND_WORKFLOW=
