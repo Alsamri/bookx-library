@@ -39,20 +39,29 @@ NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=
 IMAGEKIT_PRIVATE_KEY=
 
  API
+
 NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000
+
 NEXT_PROD_API_ENDPOINT=
 
  Database
+ 
 DATABASE_URL=
 
  Auth
+ 
 AUTH_SECRET=
 
  Upstash Redis
-UPSTASH_REDIS_URL=https://assuring-grouse-21095.upstash.io
+ 
+UPSTASH_REDIS_URL=
+
 UPSTASH_REDIS_TOKEN=
 
  Upstash Workflow
+ 
 QSTASH_URL=https://qstash.upstash.io
+
 QSTASH_TOKEN=
+
 RESEND_WORKFLOW=
