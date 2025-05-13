@@ -1,5 +1,6 @@
 # Bookx Library
-Deployed[https://bookx-library.vercel.app/]
+
+**Live Demo:** ([https://bubbly-q2bp.onrender.com](https://bookx-library.vercel.app/))  
 Bookx Library is a full-stack web application for managing book lending in a university or institutional setting. It supports user authentication, borrowing logic, admin controls, and automated workflows for notifications.
 
 ## Features
