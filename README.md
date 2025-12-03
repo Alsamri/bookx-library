@@ -1,73 +1,176 @@
 # Bookx Library
 
-**Live Demo:** (https://bookx-library.vercel.app/)  
-Bookx Library is a full-stack web application for managing book lending in a university or institutional setting. It supports user authentication, borrowing logic, admin controls, and automated workflows for notifications.
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://bookx-library.vercel.app/)
 
-## Features
+A modern, full-stack library management system designed for universities and institutions. Bookx Library streamlines book lending operations with automated workflows, real-time analytics, and role-based access control.
 
-- Secure user authentication using NextAuth.js with bcrypt-encrypted credentials
-- Role-based admin dashboard with access to user stats, book inventory, and borrowing analytics
-- Book listing, borrowing, and availability tracking for users
-- Automated email workflows using Resend and Upstash Workflow for due date reminders and status updates
-- API rate limiting and caching with Upstash Redis and Ratelimit
-- Image upload integration via ImageKit
-- Clean, accessible, and responsive UI built with Tailwind CSS
+**🔗 [View Live Demo](https://bookx-library.vercel.app/)**
 
-## Tech Stack
+---
 
-- **Frontend**: Next.js 15, React 19, Tailwind CSS
-- **Backend**: App Router (Next.js), Drizzle ORM, Neon PostgreSQL
-- **Authentication**: Auth.js + bcryptjs
-- **Image Management**: ImageKit
-- **Workflows**: Upstash Workflow + Resend
-- **Rate Limiting & Caching**: Upstash Redis, Ratelimit
-- **Validation & Forms**: Zod, React Hook Form
+## ✨ Features
 
-## Setup
+### For Users
+- 📚 **Browse & Borrow** – Search and borrow books with real-time availability tracking
+- 🔔 **Smart Notifications** – Automated email reminders for due dates and return confirmations
+- 📱 **Responsive Design** – Seamless experience across all devices
+
+### For Administrators
+- 📊 **Analytics Dashboard** – Comprehensive insights into borrowing patterns and inventory
+- 👥 **User Management** – Control user access and monitor borrowing history
+- 🔐 **Role-Based Access** – Secure, permission-based admin controls
+
+### Technical Highlights
+- 🔒 **Secure Authentication** – NextAuth.js with bcrypt-encrypted credentials
+- ⚡ **Performance Optimized** – Redis caching and API rate limiting
+- 🖼️ **Image Management** – Integrated ImageKit CDN for book covers
+- 📧 **Automated Workflows** – Transactional emails via Resend and Upstash Workflow
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|----------|-------------|
+| **Frontend** | Next.js 15, React 19, TypeScript, Tailwind CSS, Shadcn/UI |
+| **Backend** | Next.js App Router, Drizzle ORM, Neon PostgreSQL |
+| **Authentication** | Auth.js (NextAuth.js), bcryptjs |
+| **Infrastructure** | Upstash Redis, Upstash Workflow, ImageKit CDN |
+| **Email & Notifications** | Resend |
+| **Validation** | Zod, React Hook Form |
+| **Deployment** | Vercel |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+- PostgreSQL database (or Neon account)
+- Accounts for: Upstash, ImageKit, Resend
+
+### Installation
 
 1. **Clone the repository**
-
    ```bash
-   git clone https://github.com/your-username/bookx-library.git
+   git clone https://github.com/Alsamri/bookx-library.git
    cd bookx-library
+   ```
+
+2. **Install dependencies**
+   ```bash
    npm install
+   ```
 
-2. **ENV Keys**
+3. **Configure environment variables**
+   
+   Create a `.env.local` file in the root directory:
 
-### Environment Variables
+   ```env
+   # Database
+   DATABASE_URL=your_neon_postgresql_connection_string
+   
+   # Authentication
+   AUTH_SECRET=your_generated_secret
+   
+   # ImageKit CDN
+   NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_id
+   NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=your_public_key
+   IMAGEKIT_PRIVATE_KEY=your_private_key
+   
+   # API Endpoints
+   NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000
+   NEXT_PROD_API_ENDPOINT=https://your-production-url.com
+   
+   # Upstash Redis
+   UPSTASH_REDIS_URL=your_redis_url
+   UPSTASH_REDIS_TOKEN=your_redis_token
+   
+   # Upstash Workflow & Resend
+   QSTASH_URL=https://qstash.upstash.io
+   QSTASH_TOKEN=your_qstash_token
+   RESEND_WORKFLOW=your_resend_api_key
+   ```
 
-#### ImageKit
+   > 💡 **Tip:** Generate `AUTH_SECRET` with: `openssl rand -base64 32`
 
-NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=
-NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=
-IMAGEKIT_PRIVATE_KEY=
+4. **Set up the database**
+   ```bash
+   npm run db:push
+   ```
 
+5. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-#### API Configuration
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+---
 
-NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000
-NEXT_PROD_API_ENDPOINT=
+## 🐳 Docker Deployment
 
+### Quick Start with Docker Compose
 
-#### Database
+1. **Create `.env` file** (copy from `.env.local`)
+   ```bash
+   cp .env.local .env
+   ```
 
-DATABASE_URL=
+2. **Build and run**
+   ```bash
+   docker-compose up --build
+   ```
 
+3. **Access the application**
+   ```
+   http://localhost:3000
+   ```
 
-#### Authentication
+### Manual Docker Build
 
-AUTH_SECRET=
+```bash
+docker build -t bookx-library .
+docker run -p 3000:3000 --env-file .env bookx-library
+```
 
+---
 
-#### Upstash Redis
+## 📁 Project Structure
 
-UPSTASH_REDIS_URL=
-UPSTASH_REDIS_TOKEN=
+```
+bookx-library/
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   ├── (auth)/            # Authentication pages
+│   └── (root)/            # Main application pages
+├── components/            # React components
+├── lib/                   # Utility functions and configs
+├── public/                # Static assets
+├── database/              # Database schema and migrations
+└── types/                 # TypeScript type definitions
+```
 
+---
 
-#### Upstash Workflow
+## 🔑 Key Functionality
 
-QSTASH_URL=https://qstash.upstash.io
-QSTASH_TOKEN=
-RESEND_WORKFLOW=
+### User Authentication
+- Secure credential-based login with bcrypt encryption
+- Session management via Auth.js
+- Role-based permissions (User/Admin)
+
+### Book Management
+- CRUD operations for books and borrowing records
+- Real-time availability tracking
+- Search and filter capabilities
+
+### Admin Dashboard
+- User analytics and borrowing statistics
+- Inventory management
+- System-wide controls and monitoring
+
+### Automated Workflows
+- Due date reminder emails (3 days before)
+- Return confirmation notifications
+- Overdue alerts
